@@ -93,6 +93,9 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 11) now home page carousel is Done.
 12) 
 ## ---- completed upto card 
+13) current output 
+14) ![alt text](image-4.png)
+15) ![alt text](image-5.png)
 
  
 
