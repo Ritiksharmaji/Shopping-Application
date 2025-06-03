@@ -97,5 +97,25 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 14) ![alt text](image-4.png)
 15) ![alt text](image-5.png)
 
+## part-2: 1:35:00 hours...
+
+1) working with footer and navbar
+2) completing the footer nad navbar section 
+3) output 
+4) ![alt text](image-6.png)
+5) ![alt text](image-7.png)
+6) ## -------- working with Product Page -------
+7) get the tailwing css component template for creating the Product page
+8) ![alt text](image-8.png)
+9) paste that code to product.jsx to create it and modify it also.
+10) ![alt text](image-9.png)
+11) now appying the filter feacture on the url for that we will create two handler for that we have to use useLocation() hook which is avaialble in react-router not in react so we need to install the rect-router as well: npm install react-router-dom 
+    - handlerFilter
+    - handleSingleFilter
+12) output is 
+13) ![alt text](image-10.png)
+## ----------------- end ------------------
+## ------------ Part -3: creating product details page ------------------
+
  
 
