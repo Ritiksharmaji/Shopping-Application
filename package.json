@@ -17,10 +17,10 @@
     "@mui/icons-material": "^7.1.1",
     "@mui/material": "^7.1.1",
     "@tailwindcss/vite": "^4.1.8",
-    "mdb-react-ui-kit": "^9.0.0",
     "react": "^19.1.0",
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1",
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {

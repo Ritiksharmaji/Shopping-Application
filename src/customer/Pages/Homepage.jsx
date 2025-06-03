@@ -14,8 +14,7 @@ function Homepage() {
        <HomeSectionCarosel data={mens_kurta} sectionName={"Girls New Style"}/>
      </div>
 
-      {/* <Footer/> */}
-      <Footer/>
+      
     </div>
   )
 }
