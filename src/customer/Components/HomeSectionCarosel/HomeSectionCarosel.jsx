@@ -5,7 +5,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Button } from "@mui/material";
 
-function HomeSectionCarosel({data}) {
+function HomeSectionCarosel({data,sectionName}) {
   const carouselRef = useRef(null);
 
   const responsive = {
@@ -37,6 +37,7 @@ const items = data.slice(0, 15).map((item, index) => (
 
   return (
     <div className="relative px-4 lg:px-8">
+      <h2 className="text-2xl font-extrabold text-gray-800 py-5">{sectionName}</h2>
       <div className="relative p-5">
         <AliceCarousel
           mouseTracking

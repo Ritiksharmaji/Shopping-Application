@@ -97,5 +97,13 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 14) ![alt text](image-4.png)
 15) ![alt text](image-5.png)
 
+## part-2: 1:35:00 hours...
+
+1) working with footer and navbar
+2) completing the footer nad navbar section 
+3) output 
+4) ![alt text](image-6.png)
+5) ![alt text](image-7.png)
+6) 
  
 

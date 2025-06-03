@@ -18,7 +18,7 @@ import { mainCarouselData } from './mainCaroselData';
 // ];
 
 const items = mainCarouselData.map((item, index) => (
-    <div key={index} className="item">
+    <div key={index} className="item z-10">
         <a href={item.path}>
             <img className='cursor-pointer' role='presentation' src={item.image} alt={`Slide ${index + 1}`} />
         </a>
