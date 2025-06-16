@@ -126,3 +126,8 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 ## ------- branch-5-creating-product-cart-page working with checkout page --------
 
 1) ![alt text](image-13.png)
+
+## ------- branch-6- creating checkout-page
+1) to create the stepper component we are using the material UI stepper component
+2) ![alt text](image-14.png)
+3) ![alt text](image-15.png)
