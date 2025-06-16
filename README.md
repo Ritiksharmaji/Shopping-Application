@@ -122,3 +122,7 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 2) we are using the material-ui-rating:
 3) ![alt text](image-12.png)
 4) 
+
+## ------- branch-5-creating-product-cart-page working with checkout page --------
+
+1) ![alt text](image-13.png)
