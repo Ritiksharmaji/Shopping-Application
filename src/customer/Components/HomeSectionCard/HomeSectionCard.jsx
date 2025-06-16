@@ -1,6 +1,6 @@
 import React from "react";
 
-function HomeSectionCard({ item, key }) {
+function HomeSectionCard({ item }) {
   const { image, brand, title, selling_price, price, disscount } = item;
 
   return (
