@@ -1,55 +1,68 @@
-
-import React from "react";
-
+// Importing necessary React and icon components
+import React from 'react';
+import {
+  FaDribbbleSquare,
+  FaFacebookSquare,
+  FaGithubSquare,
+  FaInstagram,
+  FaTwitterSquare,
+} from 'react-icons/fa';
+// Reusable SocialIcon component with hover effect
+const SocialIcon = ({ icon: Icon }) => (
+  <Icon className="social-icon hover:text-[#00df9a]" size={30} />
+);
+// Footer component
 const Footer = () => {
+  // Array defining the content and structure of the footer
+  const items = [
+    // Social media icons
+    { type: 'icon', icon: FaFacebookSquare },
+    { type: 'icon', icon: FaInstagram },
+    { type: 'icon', icon: FaTwitterSquare },
+    { type: 'icon', icon: FaGithubSquare },
+    { type: 'icon', icon: FaDribbbleSquare },
+    // Footer sections
+    { type: 'section', title: 'Solutions', items: ['Analytics', 'Marketing', 'Commerce', 'Insights'] },
+    { type: 'section', title: 'Support', items: ['Pricing', 'Documentation', 'Guides', 'API Status'] },
+    { type: 'section', title: 'Company', items: ['About', 'Blog', 'Jobs', 'Press', 'Careers'] },
+    { type: 'section', title: 'Legal', items: ['Claim', 'Policy', 'Terms'] },
+  ];
+  // JSX structure of the footer
   return (
-    <footer className="bg-gray-800 text-white py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between">
-          {/* Company Info */}
-          <div className="w-full md:w-1/3 mb-4">
-            <h2 className="text-lg font-semibold mb-2">ShopEasy</h2>
-            <p className="text-sm">
-              Your one-stop shop for all your needs. Quality products, great prices.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="w-full md:w-1/3 mb-4">
-            <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-            <ul className="text-sm space-y-2">
-              <li><a href="/about" className="hover:underline">About Us</a></li>
-              <li><a href="/contact" className="hover:underline">Contact</a></li>
-              <li><a href="/faq" className="hover:underline">FAQs</a></li>
-              <li><a href="/terms" className="hover:underline">Terms & Conditions</a></li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div className="w-full md:w-1/3 mb-4">
-            <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-                Facebook
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-                Twitter
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-                Instagram
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center text-sm mt-6 border-t border-gray-700 pt-4">
-          © {new Date().getFullYear()} ShopEasy. All rights reserved.
+    <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300'>
+      {/* Left section with brand and social icons */}
+      <div>
+        <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-[#00df9a]'>REACT.</h1>
+        <p className='py-4'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero reiciendis, blanditiis accusantium.
+        </p>
+        <div className='flex justify-between md:w-[75%] my-6'>
+          {/* Mapping over social icons and rendering the SocialIcon component */}
+          {items.map((item, index) => (
+            item.type === 'icon' ? (
+              <SocialIcon key={index} icon={item.icon} />
+            ) : null
+          ))}
         </div>
       </div>
-    </footer>
+      {/* Right section with footer content organized in sections */}
+      <div className='lg:col-span-2 flex justify-between mt-6'>
+        {/* Mapping over sections and rendering content */}
+        {items.map((item, index) => (
+          item.type === 'section' ? (
+            <div key={index}>
+              <h6 className="font-medium text-gray-100 text-xl">{item.title}</h6>
+              <ul>
+                {/* Mapping over items in each section */}
+                {item.items.map((subItem, subIndex) => (
+                  <li key={subIndex} className='py-2 text-sm'>{subItem}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        ))}
+      </div>
+    </div>
   );
 };
-
 export default Footer;
-

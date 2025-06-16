@@ -118,4 +118,7 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 ## ------------ Part -3: creating product details page ------------------
 
  
-
+1) ![alt text](image-11.png)
+2) we are using the material-ui-rating:
+3) ![alt text](image-12.png)
+4) 
