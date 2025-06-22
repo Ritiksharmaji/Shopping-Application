@@ -1,10 +1,14 @@
 import React from "react";
 import "./ProductCard.css"; // Assuming you have a CSS file for styles
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product }) {
   const { image, brand, title, selling_price, price, disscount } = product;
+  const navigater = useNavigate();
+
+
   return (
-    <div className="productCard w-[15rem] m-3 transition-all cursor-pointer">
+    <div onClick={()=>navigater(`/product/${4}`)} className="productCard w-[15rem] m-3 transition-all cursor-pointer">
       <div className="h-[20rem]">
         <img
           // src="https://th.bing.com/th/id/OIP.Q6_bOWeSy35ETkY9YieAswHaJQ?r=0&w=1600&h=2000&rs=1&pid=ImgDetMain"

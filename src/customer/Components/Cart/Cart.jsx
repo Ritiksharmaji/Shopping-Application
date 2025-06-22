@@ -1,5 +1,6 @@
 import React from 'react';
 import CartItem from './CartItem';
+import { useNavigate } from 'react-router-dom';
 
 const dummyProducts = [
   {
@@ -19,6 +20,7 @@ const dummyProducts = [
 ];
 
 function Cart() {
+  const navigate = useNavigate();
 return(
 
    <div className="w-full">
@@ -56,7 +58,7 @@ return(
         </div>
 
         {/* Checkout Button */}
-        <button
+        <button onClick={()=>navigate('/checkout/?step=2')}
           className="w-full mt-6 bg-purple-600 text-white font-semibold py-3 rounded-md hover:bg-purple-700 transition"
         >
           Proceed to Checkout

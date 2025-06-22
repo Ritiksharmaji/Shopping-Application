@@ -27,6 +27,7 @@ import './prograa.css';
 import SimilarProductsSection from './SimilarProductsSection'
 import { mens_kurta } from '../../../Data/mens_kurta'
 import HomeSectionCard from '../HomeSectionCard/HomeSectionCard'
+import { useNavigate } from 'react-router-dom'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -88,6 +89,7 @@ function classNames(...classes) {
 
 export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white lg:px-15">
@@ -288,7 +290,8 @@ export default function ProductDetails() {
                 </fieldset>
               </div>
 
-               <Button variant='contained' sx={{px:"2rem", py:"1rem", bgcolor:"#9155fd"}} >
+               <Button variant='contained' onClick={()=>navigate(`/cart`)}
+                sx={{px:"2rem", py:"1rem", bgcolor:"#9155fd"}} >
                 Add to bag
              </Button>
             </form>
