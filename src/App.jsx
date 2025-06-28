@@ -6,9 +6,9 @@ import CustomerRouters from './customer/Routers/CustomerRouters';
 
 function App() {
   return (
-    <Router>
+   
       <CustomerRouters />
-    </Router>
+    
   );
 }
 
