@@ -1,9 +1,23 @@
 import { TextField, Button } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getUser, register } from '../../State/Auth/Action';
+
 
 function RegisterForm({ handleClose }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const jwt=localStorage.getItem("jwt");
+    const { auth } = useSelector((store) => store);
+
+useEffect(()=>{
+  if(jwt){
+    dispatch(getUser(jwt))
+  }
+
+},[jwt])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +29,12 @@ function RegisterForm({ handleClose }) {
         email: formData.get('email'),
         password: formData.get('password'),
     }
+  
     console.log(data);
-    handleClose();
+    // dispatch the register action 
+    // we can dispatch a action either like this: dispatch({ type: 'REGISTER_REQUEST', payload: data }); or like this: dispatch(register(data))
+    dispatch(register(data))
+    //handleClose();
   };
 
   return (

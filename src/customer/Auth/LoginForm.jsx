@@ -1,9 +1,16 @@
 import { TextField, Button } from '@mui/material';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../State/Auth/Action';
 
 function LoginForm({ handleClose }) {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login Form Submitted");
@@ -15,7 +22,10 @@ function LoginForm({ handleClose }) {
     };
 
     console.log(data);
-    handleClose();
+    // Dispatch the login action
+    //dispatch({ type: 'LOGIN_REQUEST', payload: data });
+    dispatch(login(data))
+   // handleClose();
   };
 
   return (
