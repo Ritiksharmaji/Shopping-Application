@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
 import FilterListAltIcon from "@mui/icons-material/FilterListAlt";
@@ -31,7 +31,9 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { findProducts } from "../../State/Customers/Product/Action";
 
 const sortOptions = [
   //   { name: 'Most Popular', href: '#', current: true },
@@ -94,7 +96,30 @@ export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  //const param = useParams();
+  const dispatch = useDispatch();
+  // const {product} = useSelector(store=>store)
+  // console.log("product in product page - ", product);
+  const { product, products, loading, error } = useSelector(store => store.product);
 
+// Accessing the products array
+console.log("All products:", products.content); 
+  
+  // const filter = decodeURIComponent(location.search);
+  const decodedQueryString = decodeURIComponent(location.search);
+  const searchParams = new URLSearchParams(decodedQueryString);
+  const colorValue = searchParams.get("color");
+  const sizeValue = searchParams.get("size");
+  const price = searchParams.get("price");
+  const disccount = searchParams.get("disccout");
+  const sortValue = searchParams.get("sort");
+  const pageNumber = searchParams.get("page") || 1;
+  const stock = searchParams.get("stock");
+  const param = useParams();
+  console.log(param.levelThree);  
+
+
+  
   // this filter handler funtion will handle the filter logic for multiple checkboxs only.
   const handleFilter = (value, sectionId) => {
     const searchParams = new URLSearchParams(location.search);
@@ -148,6 +173,42 @@ export default function Product() {
     navigate({ search: `?${query}` });
   } 
 
+  useEffect(() => {
+    console.log("JWT token is:",localStorage.getItem("jwt"));
+  console.log("Product component mounted");
+  return () => console.log("Product component unmounted");
+}, [location.key]);
+
+
+ useEffect(() => {
+    const [minPrice, maxPrice] =
+      price === null ? [0, 0] : price.split("-").map(Number);
+    const data = {
+      category: param.lavelThree,
+      colors: colorValue || [],
+      sizes: sizeValue || [],
+      minPrice: minPrice || 0,
+      maxPrice: maxPrice || 10000,
+      minDiscount: disccount || 0,
+      sort: sortValue || "price_low",
+      pageNumber: pageNumber ,
+      pageSize: 10,
+      stock: stock,
+    };
+    dispatch(findProducts(data));
+  }, [
+    param.lavelThree,
+    colorValue,
+    sizeValue,
+    price,
+    disccount,
+    sortValue,
+    pageNumber,
+    stock,
+  ]);
+
+
+  
   return (
     <div className="bg-white">
       <div>
@@ -531,7 +592,7 @@ export default function Product() {
 
               {/* Product grid */}
               <div className="lg:col-span-3 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {mens_kurta.map((product) => (
+                {products.content?.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
