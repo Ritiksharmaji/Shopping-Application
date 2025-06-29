@@ -131,3 +131,17 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 1) to create the stepper component we are using the material UI stepper component
 2) ![alt text](image-14.png)
 3) ![alt text](image-15.png)
+
+
+## ------- working with redux  --------------
+
+
+
+## ------ branch-10 working with product,cart and implemention of product page to implement the backend apis using redux -------
+1) first create the folder in state folder as customers/Product
+2) second create three files 
+    - ActionTypes.js
+    - Action.js
+    - Reducer.js
+3) so first we need to define the ActionTypes, then Actions then Reducers
+4) 

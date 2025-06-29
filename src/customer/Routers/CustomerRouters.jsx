@@ -19,7 +19,9 @@ function CustomerRouters() {
         <Route path='/register' element={<Homepage />} />
         <Route path='/' element={<Homepage />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/:lavelOne/:lavelTwo/:lavelThre' element={<Product />} />
+        {/* <Route path='/:lavelOne/:lavelTwo/:lavelThree' element={<Product />} /> */}
+        <Route path='/:levelOne/:levelTwo/:levelThree' element={<Product />} />
+
         <Route path='/product/:productId' element={<ProductDetails />} />
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
