@@ -1,8 +1,14 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import AddressCard from '../AddressCard/AddressCard';
+import { useDispatch } from 'react-redux';
+import { createOrder } from '../../../State/Customers/Order/Action';
+import { useNavigate } from 'react-router-dom';
 
 export default function DeliveryAddressForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +20,10 @@ export default function DeliveryAddressForm() {
             addressData[key] = value;
         }
 
+        const orderData = {addressData, navigate};
         console.log('Address Data:', addressData);
+        dispatch(createOrder(orderData));
+
 };
 
 
@@ -76,7 +85,7 @@ export default function DeliveryAddressForm() {
                   <TextField
                     required
                     id="address"
-                    name="address"
+                    name="streetAddress"
                     label="Full Address"
                     fullWidth
                     multiline
@@ -93,11 +102,22 @@ export default function DeliveryAddressForm() {
                     fullWidth
                   />
                 </div>
+
+                 <div>
+                  <TextField
+                    required
+                    id="state"
+                    name="state"
+                    label="State"
+                    fullWidth
+                  />
+                </div>
+
                 <div>
                   <TextField
                     required
                     id="zip"
-                    name="zip"
+                    name="zipCode"
                     label="Zip / Postal Code"
                     fullWidth
                   />
@@ -106,7 +126,7 @@ export default function DeliveryAddressForm() {
                   <TextField
                     required
                     id="phone"
-                    name="phone"
+                    name="mobile"
                     label="Phone Number"
                     fullWidth
                   />

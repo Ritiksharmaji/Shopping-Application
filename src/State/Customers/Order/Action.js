@@ -10,10 +10,10 @@ import {
   GET_ORDER_HISTORY_REQUEST,
   GET_ORDER_HISTORY_SUCCESS,
 } from "./ActionType";
-import api, { API_BASE_URL } from "../../../config/api";
+import api, { API_BASE_URL } from "../../../config/apiConfig";
 
 export const createOrder = (reqData) => async (dispatch) => {
-  console.log("req data ", reqData);
+  console.log("req data  in the createOrder action", reqData);
   try {
     dispatch({ type: CREATE_ORDER_REQUEST });
 
@@ -32,10 +32,10 @@ export const createOrder = (reqData) => async (dispatch) => {
 
      const { data } = await api.post(
       `${API_BASE_URL}/api/orders/`,
-      reqData.address,
+      reqData.addressData,
     );
     
-    if (data._id) {
+    if (data.shippingAddress._id) {
       reqData.navigate({ search: `step=3&order_id=${data._id}` });
     }
     console.log("created order - ", data);

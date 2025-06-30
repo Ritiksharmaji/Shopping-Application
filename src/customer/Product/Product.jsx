@@ -28,6 +28,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  Pagination,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -172,6 +173,13 @@ console.log("All products:", products.content);
     const query = searchParams.toString();
     navigate({ search: `?${query}` });
   } 
+
+ const handlePaginationChange = (event, value) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("page", value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
 
   useEffect(() => {
     console.log("JWT token is:",localStorage.getItem("jwt"));
@@ -598,6 +606,18 @@ console.log("All products:", products.content);
               </div>
             </div>
           </section>
+
+         {/* pagination section */}
+        <section className="w-full px-[3.6rem]">
+          <div className="mx-auto px-4 py-5 flex justify-center">
+            <Pagination
+              count={products?.totalPages}
+              color="primary"
+              className=""
+              onChange={handlePaginationChange}
+            />
+          </div>
+        </section>
         </main>
       </div>
     </div>
