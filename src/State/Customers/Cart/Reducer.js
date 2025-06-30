@@ -24,11 +24,18 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM_TO_CART_REQUEST:
       return { ...state, loading: true, error: null };
-    case ADD_ITEM_TO_CART_SUCCESS:
+    // case ADD_ITEM_TO_CART_SUCCESS:
+    //   return {
+    //     ...state,
+    //     cartItems: [...state.cartItems, action.payload.cartItems],
+    //     loading: false,
+    //   };
+     case ADD_ITEM_TO_CART_SUCCESS:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.payload.cartItems],
         loading: false,
+        cart: action.payload, // Make sure your API returns the full updated cart
+        cartItems: action.payload.cartItems // Update cart items from the response
       };
     case ADD_ITEM_TO_CART_FAILURE:
       return { ...state, loading: false, error: action.payload };
@@ -58,21 +65,39 @@ const cartReducer = (state = initialState, action) => {
         loading: true,
         error:null,
       };
-    case REMOVE_CART_ITEM_SUCCESS:
+    // case REMOVE_CART_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     cartItems: state.cartItems.filter(
+    //       (item) => item._id !== action.payload
+    //     ),
+    //     loading: false,
+    //   };
+    // case UPDATE_CART_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     cartItems: state.cartItems.map((item) =>
+    //       item._id === action.payload._id ? action.payload : item
+    //     ),
+    //     loading: false,
+    //   };
+
+     case REMOVE_CART_ITEM_SUCCESS:
       return {
         ...state,
-        cartItems: state.cartItems.filter(
-          (item) => item._id !== action.payload
-        ),
         loading: false,
+        cart: action.payload,
+        cartItems: action.payload.cartItems,
+        deleteCartItems:action.payload
       };
+
     case UPDATE_CART_ITEM_SUCCESS:
       return {
         ...state,
-        cartItems: state.cartItems.map((item) =>
-          item._id === action.payload._id ? action.payload : item
-        ),
         loading: false,
+        cart: action.payload, 
+        cartItems: action.payload.cartItems,
+        updateCartItem:action.payload,
       };
     case REMOVE_CART_ITEM_FAILURE:
     case UPDATE_CART_ITEM_FAILURE:

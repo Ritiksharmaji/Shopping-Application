@@ -1,26 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
-
-const dummyProducts = [
-  {
-    id: 1,
-    name: 'Noise Smart Watch',
-    image: 'https://via.placeholder.com/80',
-    rating: 4.2,
-    price: '₹3,299',
-  },
-  {
-    id: 2,
-    name: 'JBL Earbuds',
-    image: 'https://via.placeholder.com/80',
-    rating: 4.5,
-    price: '₹2,099',
-  },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { getCart } from '../../../State/Customers/Cart/Action';
 
 function Cart() {
   const navigate = useNavigate();
+  const { cart, cartItems } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
+
+  console.log('Cart in Cart Page:', cart);
+  console.log('CartItems in Cart Page:', cartItems);
+
 return(
 
    <div className="w-full">
@@ -28,8 +23,14 @@ return(
 
     {/* Left: Cart Items */}
     <div className="col-span-2 space-y-5">
-      <CartItem />
-      <CartItem />
+      {/* <CartItem /> */}
+      {cartItems?.length > 0 ? (
+        cartItems.map((item) => (
+          <CartItem key={item._id} item={item} />
+        ))
+      ) : (
+        <p>Your cart is empty</p>
+      )}
     </div>
 
     {/* Right: Price Details */}
@@ -40,11 +41,11 @@ return(
         <div className="space-y-4 pt-4 font-semibold text-sm">
           <div className="flex justify-between">
             <span>Price</span>
-            <span>$456</span>
+            <span>${cart?.totalPrice}</span>
           </div>
           <div className="flex justify-between">
             <span>Discount</span>
-            <span className="text-green-600">- $23</span>
+            <span className="text-green-600">- ${cart?.discounte}</span>
           </div>
           <div className="flex justify-between">
             <span>Delivery Charge</span>
@@ -53,7 +54,7 @@ return(
 
           <div className="border-t pt-4 flex justify-between text-base">
             <span>Total Amount</span>
-            <span className="text-purple-600 font-bold">$123456</span>
+            <span className="text-purple-600 font-bold">${cart?.totalDiscountedPrice}</span>
           </div>
         </div>
 
@@ -73,3 +74,4 @@ return(
 }
 
 export default Cart;
+

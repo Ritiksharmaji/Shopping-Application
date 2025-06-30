@@ -81,7 +81,8 @@ const customerProductReducer = (state = initialState, action) => {
       return { 
         ...state, 
         product: action.payload, 
-        loading: false 
+        loading: false,
+        error:null,
       };
 
     case FIND_PRODUCT_BY_ID_FAILURE:

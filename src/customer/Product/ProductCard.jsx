@@ -8,7 +8,7 @@ function ProductCard({ product }) {
 
 
   return (
-    <div onClick={()=>navigater(`/product/${4}`)} className="productCard w-[15rem] m-3 transition-all cursor-pointer">
+    <div onClick={()=>navigater(`/product/${product._id}`)} className="productCard w-[15rem] m-3 transition-all cursor-pointer">
       <div className="h-[20rem]">
         <img
           // src="https://th.bing.com/th/id/OIP.Q6_bOWeSy35ETkY9YieAswHaJQ?r=0&w=1600&h=2000&rs=1&pid=ImgDetMain"

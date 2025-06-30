@@ -1,7 +1,6 @@
 import axios from "axios";
 
 
-import { API_BASE_URL } from "../../../config/api";
 import {
     ADD_ITEM_TO_CART_REQUEST,
     ADD_ITEM_TO_CART_SUCCESS,
@@ -34,7 +33,7 @@ export const addItemToCart = (reqData) => async (dispatch) => {
     //   config,
     // );
 
-    const {data} = await api.put("/api/cart/add",reqData.data);
+    const {data} = await api.put("/api/cart/add",reqData);
 
     console.log("add item to cart ",data)
     dispatch({
@@ -78,7 +77,7 @@ export const getCart = () => async (dispatch) => {
   }
 };
 
-export const removeCartItem = (reqData) => async (dispatch) => {
+export const removeCartItem = (cartItemId) => async (dispatch) => {
     try {
       dispatch({ type: REMOVE_CART_ITEM_REQUEST });
       // const config = {
@@ -89,11 +88,11 @@ export const removeCartItem = (reqData) => async (dispatch) => {
       // };
       // await axios.delete(`${API_BASE_URL}/api/cart_items/${reqData.cartItemId}`,config);
   
-      const{data} = await api.delete(`/api/cart_items/${reqData.cartItemId}`);
+      const{data} = await api.delete(`/api/cart_items/${cartItemId}`);
       
       dispatch({
         type: REMOVE_CART_ITEM_SUCCESS,
-        payload: data,
+        payload: data.cart,
       });
     } catch (error) {
       dispatch({
@@ -123,7 +122,7 @@ export const removeCartItem = (reqData) => async (dispatch) => {
       console.log("udated cartitem ",data)
       dispatch({
         type: UPDATE_CART_ITEM_SUCCESS,
-        payload: data,
+        payload: data.cart,
       });
     } catch (error) {
       dispatch({
