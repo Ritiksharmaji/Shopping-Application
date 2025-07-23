@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import ProductDetails from '../Components/ProductDetails/ProductDetails';
 import Checkout from '../Components/Checkout/Checkout';
 import Order from '../Components/Order/Order';
+import PaymentSuccess from '../Components/paymentSuccess/PaymentSuccess';
 
 function CustomerRouters() {
   return (
@@ -28,7 +29,7 @@ function CustomerRouters() {
         <Route path='/account/order' element={<Order/>}/>
         
         <Route path='/account/order-details/:id' element={<OrderDetails />} />
-
+        <Route path="/payment/:orderId" element={<PaymentSuccess />}></Route>
       </Routes>
       <Footer />
     </div>
