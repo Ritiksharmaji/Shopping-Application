@@ -147,3 +147,4 @@ It provides free, beautifully designed SVG icons from the Tailwind CSS team. The
 4) 
 
 
+## has to work on some issues on all the pages 
